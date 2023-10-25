@@ -16,6 +16,18 @@ const {
   DELETE_ALL
 } = actionsType;
 
+//Dispatch data from server to reducer (create data)
+export const createModel = (newModel) => async (dispatch) => {
+  try {
+    const { data } = await services.createModel(newModel);
+
+    dispatch({type: CREATE_MODEL, payload: data});
+
+  } catch (error) {
+    console.log("Fail with creating data", error);
+  }
+}
+
 //Dispatch data from server to reducer (reading datas)
 export const readModels = () => async (dispatch) => {
   try {

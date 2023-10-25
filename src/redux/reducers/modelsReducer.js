@@ -14,7 +14,7 @@ export const modelsReducer = (modelsList = initModelsList, action) => {
 
   switch (action.type) {
     case CREATE_MODEL:
-      return modelsList;
+      return [...modelsList, action.payload];
     case READ_MODELS:
       return action.payload;
     case UPDATE_MODEL:

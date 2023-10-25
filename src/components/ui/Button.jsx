@@ -47,5 +47,5 @@ export default function Button({
 Button.propTypes = {
   label: PropTypes.string.isRequired,
   type: PropTypes.string,
-  onHandle: PropTypes.func.isRequired
+  onHandle: PropTypes.func
 }

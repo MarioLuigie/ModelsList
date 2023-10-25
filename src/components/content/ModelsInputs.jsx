@@ -1,8 +1,11 @@
 /* eslint-disable react/no-unknown-property */
 // /** @jsxImportSource @emotion/react */
 import { css } from '@emotion/react';
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useDispatch } from 'react-redux';
 
+import { useModelContext } from '../../context/context';
+import * as actions from "../../redux/actions/modelsActions";
 import { colors } from "../../constants/colors";
 import Input from "../ui/Input";
 import Card from "../ui/Card";
@@ -32,7 +35,21 @@ export default function ModelsInputs() {
     age: ""
   }
 
+  const { editingModel, setEditingModel } = useModelContext();
   const [ form, setForm ] = useState(initForm);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    if(editingModel) {
+      const { name, surname, age, _id} = editingModel;
+      setForm({
+        name,
+        surname,
+        age,
+        _id
+      });
+    }
+  }, [editingModel])
 
   const handleChangeForm = (evt) => {
     setForm({
@@ -43,10 +60,18 @@ export default function ModelsInputs() {
 
   const handleCancelForm = () => {
     setForm(initForm);
+    setEditingModel(null);
+  }
+
+  const handleCreateModel = (evt) => {
+    const { name, surname, age } = form;
+
+    evt.preventDefault();
+    dispatch(actions.createModel({ name, surname, age }));
   }
 
   return (
-    <form css={styles}>
+    <form css={styles} onSubmit={handleCreateModel}>
       <Card>
         <Input 
             name="name"
@@ -70,7 +95,7 @@ export default function ModelsInputs() {
             name="age"
             id="ageInput"
             label="Age"
-            value={form.age}
+            value={String(form.age)}
             type="number"
             placeholder="Enter age"
             onHandle={handleChangeForm}
@@ -79,7 +104,10 @@ export default function ModelsInputs() {
       <Card>
         <div className='buttons'>
           <Button label="Cancel" type="reset" onHandle={handleCancelForm}/>
-          <Button label="Add" onHandle={() => {}}/>
+          {editingModel 
+            ? <Button label="Update"/>
+            : <Button label="Add"/>
+          }
         </div>
       </Card>
     </form>

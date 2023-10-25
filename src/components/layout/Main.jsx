@@ -1,11 +1,13 @@
+/* eslint-disable react/prop-types */
+/* eslint-disable react/display-name */
 /* eslint-disable react/no-unknown-property */
 // /** @jsxImportSource @emotion/react */
 import { css } from '@emotion/react';
+import { forwardRef } from 'react';
 
 import * as dim from "../../constants/dimensions";
 import ModelsInputs from "../content/ModelsInputs";
 import ModelsList from '../content/ModelsList';
-
 
 const styles = css`
   width: ${dim.main.width}%;
@@ -17,12 +19,14 @@ const styles = css`
 
 `
 
-export default function Main() {
+const Main = forwardRef((props, ref) => {
 
   return (
-    <div css={styles}>
+    <div css={styles} ref={ref}>
       <ModelsInputs />
-      <ModelsList />
+      <ModelsList mainRef={props.mainRef}/>
     </div>
-  )
-}
+  );
+});
+
+export default Main;

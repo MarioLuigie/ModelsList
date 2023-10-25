@@ -100,8 +100,11 @@ const styles = css`
 
 `
 
-export default function ModelCard({ model }) {
-
+export default function ModelCard({ 
+  model,
+  onEdit
+}) {
+  
   return (
     <div css={styles}>
       <Card config={{gap: "20"}}>
@@ -113,7 +116,7 @@ export default function ModelCard({ model }) {
             <div className='control'>
               <FontAwesomeIcon icon={faUser}/>
             </div>
-            <div className='control'>
+            <div className='control' onClick={onEdit}>
               <FontAwesomeIcon icon={faUserPen}/>
             </div>
             <div className='control control--close'>
