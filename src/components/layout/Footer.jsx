@@ -13,6 +13,7 @@ const styles = css`
   justify-content: center;
   align-items: center;
   border-top: ${colors.lineColor} solid 1px;
+  flex-shrink: 0;
 
   .sign {
     background: ${gradient.purple};

@@ -40,7 +40,7 @@ const styles = css`
     display: flex;
     flex-direction: column;
     gap: 10px;
-    font-size: 0.9rem;
+    font-size: 0.95rem;
 
     @media screen and (min-width: 440px) {
       font-size: 1.1rem;
