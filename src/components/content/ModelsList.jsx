@@ -3,7 +3,7 @@
 import { css } from '@emotion/react';
 import { useSelector } from 'react-redux';
 
-import Model from "./Model";
+import ModelCard from "./ModelCard";
 
 const styles = css`
   width: 100%;
@@ -20,7 +20,7 @@ export default function ModelsList() {
   return (
     <div css={styles}>
       {modelsList.map(model => (
-        <Model key={model._id} />
+        <ModelCard key={model._id} model={model}/>
       ))}
     </div>
   )

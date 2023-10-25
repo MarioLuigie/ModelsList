@@ -3,13 +3,14 @@
 import { css } from '@emotion/react';
 import PropTypes from "prop-types"
 
-const styles = css`
-    padding: 30px;
+const styles = (config) => css`
+    padding: ${config.padding}px;
     width: 100%;
+    overflow: hidden;
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 35px;
+    gap: ${config.gap}px;
     outline: #530d5c solid 1px;
     background-color: #222222;
     border-radius: 5px;
@@ -17,15 +18,21 @@ const styles = css`
 
 `
 
-export default function Card({ children }) {
+export default function Card({children, config }) {
+  const defaultConfig = {
+    gap: "35",
+    padding: "30",
+    ...config
+  }
 
   return (
-    <div css={styles}>
+    <div css={styles(defaultConfig)}>
       {children}
     </div>
   )
 }
 
 Card.propTypes = {
-  children: PropTypes.node
+  children: PropTypes.node,
+  config: PropTypes.object
 }

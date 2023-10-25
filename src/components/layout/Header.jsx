@@ -31,11 +31,11 @@ const styles = css`
     }
 
     @media screen and (min-width: 460px) {
-      font-size: 4rem;
+      font-size: 3.8rem;
     }
 
     @media screen and (min-width: 520px) {
-      font-size: 4.8rem;
+      font-size: 4.5rem;
     }
   }
 

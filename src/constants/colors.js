@@ -3,5 +3,6 @@ export const gradient = {
 }
 
 export const colors = {
-  lineColor: "#383838"
+  lineColor: "#383838",
+  buttonColor: "#a280b6"
 }

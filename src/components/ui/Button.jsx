@@ -3,6 +3,8 @@
 import { css } from '@emotion/react';
 import PropTypes from "prop-types";
 
+import { colors } from "../../constants/colors";
+
 const styles = css`
   display: flex;
   justify-content: center;
@@ -14,9 +16,13 @@ const styles = css`
     font-size: 1.1rem;
     border-radius: 2px;
     box-shadow: #000000a6 0 0 12px;
-    background-color: #a280b6;
+    background-color: ${colors.buttonColor};
     cursor: pointer;
     color: #1a1a1a;
+
+    &:hover {
+      background-color: #ab5ef3;
+    }
 
     &:active {
       transform: scale(0.95);
