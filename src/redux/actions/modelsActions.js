@@ -40,3 +40,27 @@ export const readModels = () => async (dispatch) => {
   }
 }
 
+//Dispatch updated data to reducer from server
+export const updateModel = (form, id) => async (dispatch) => {
+  try {
+    const { data } = await services.updateModel(form, id);
+
+    dispatch({type: UPDATE_MODEL, payload: data});
+    console.log(data);
+
+  } catch (error) {
+    console.log("Fail with updating data", error);
+  }
+}
+
+//Dispatch all deleted datas to reducer from server
+export const deleteAll = () => async (dispatch) => {
+  try {
+    await services.deleteAll();
+
+    dispatch({type: DELETE_ALL});
+    
+  } catch (error) {
+    console.log("Fail with deleting all datas", error);
+  }
+}

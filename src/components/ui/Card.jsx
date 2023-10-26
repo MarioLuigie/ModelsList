@@ -3,6 +3,8 @@
 import { css } from '@emotion/react';
 import PropTypes from "prop-types"
 
+import * as colors from "../../constants/colors";
+
 const styles = (config) => css`
     padding: ${config.padding}px;
     width: 100%;
@@ -11,10 +13,10 @@ const styles = (config) => css`
     flex-direction: column;
     align-items: center;
     gap: ${config.gap}px;
-    outline: #530d5c solid 1px;
-    background-color: #222222;
+    outline: ${colors.colors.outlineColor} solid 1px;
+    background-color: ${colors.colors.bgColor2};
     border-radius: 5px;
-    box-shadow: #00000065 0px 10px 20px;
+    box-shadow: ${colors.colors.boxShadow};
 
 `
 

@@ -15,3 +15,15 @@ export const readModels = () => {
   const data = mdlAxios.get("/");
   return data;
 }
+
+//Patch data on server and return updated data
+export const updateModel = (form, id) => {
+  const data = mdlAxios.patch(`/${id}`, form);
+  return data;
+}
+
+//Delete all datas from server
+export const deleteAll = () => {
+  const data = mdlAxios.delete("/");
+  return data;
+}

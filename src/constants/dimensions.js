@@ -15,5 +15,5 @@ export const main = {
 
 export const footer = {
   width: 100,
-  height: 70
+  height: 130
 }

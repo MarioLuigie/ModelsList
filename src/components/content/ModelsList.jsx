@@ -2,7 +2,7 @@
 // /** @jsxImportSource @emotion/react */
 import { css } from '@emotion/react';
 import { useSelector } from 'react-redux';
-import { useModelContext } from '../../context/context';
+import { useModelContext } from '../../context/Context';
 import PropTypes from "prop-types";
 
 import ModelCard from "./ModelCard";
@@ -23,14 +23,12 @@ export default function ModelsList({ mainRef }) {
 
   const handleEditModel = (model) => () => {
     setEditingModel(model);
-    scrollToTop(mainRef);
+    scrollToTop(mainRef.current);
   }
-
-  console.log(modelsList);
 
   return (
     <div css={styles}>
-      {modelsList?.map((model) => (
+      {modelsList.map((model) => (
         <ModelCard 
           key={model._id} 
           model={model}

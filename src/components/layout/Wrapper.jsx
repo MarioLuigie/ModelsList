@@ -7,6 +7,7 @@ import Header from "./Header";
 import Main from "./Main";
 import Footer from "./Footer";
 import * as dim from "../../constants/dimensions";
+import * as colors from "../../constants/colors";
 
 const styles = css`
   width: ${dim.wrapper.width}%;
@@ -16,7 +17,7 @@ const styles = css`
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: #1b1b1b;
+  background-color: ${colors.colors.bgColor1};
 
   @media screen and (min-width: 780px) {
     width: 75%;

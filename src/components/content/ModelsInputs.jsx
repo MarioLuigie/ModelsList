@@ -4,7 +4,7 @@ import { css } from '@emotion/react';
 import { useState, useEffect } from "react";
 import { useDispatch } from 'react-redux';
 
-import { useModelContext } from '../../context/context';
+import { useModelContext } from '../../context/Context';
 import * as actions from "../../redux/actions/modelsActions";
 import { colors } from "../../constants/colors";
 import Input from "../ui/Input";
@@ -68,6 +68,13 @@ export default function ModelsInputs() {
 
     evt.preventDefault();
     dispatch(actions.createModel({ name, surname, age }));
+    handleCancelForm();
+  }
+
+  const handleUpdateConfirmModel = (evt) => {
+    evt.preventDefault();
+    dispatch(actions.updateModel(form, editingModel._id));
+    handleCancelForm();
   }
 
   return (
@@ -105,7 +112,7 @@ export default function ModelsInputs() {
         <div className='buttons'>
           <Button label="Cancel" type="reset" onHandle={handleCancelForm}/>
           {editingModel 
-            ? <Button label="Update"/>
+            ? <Button type="button" label="Update" onHandle={handleUpdateConfirmModel}/>
             : <Button label="Add"/>
           }
         </div>

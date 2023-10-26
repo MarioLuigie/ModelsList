@@ -7,6 +7,7 @@ import { useDispatch } from 'react-redux';
 
 import Wrapper from "./layout/Wrapper";
 import { readModels } from "../redux/actions/modelsActions";
+import ModalPortal from "../modals/ModalPortal";
 
 const styles = css`
   width: 100%;

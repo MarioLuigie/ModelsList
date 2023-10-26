@@ -74,6 +74,7 @@ const styles = css`
 
   .id {
     color: #464646;
+    font-size: 0.9rem;
   }
 
   .controls {
@@ -142,5 +143,6 @@ export default function ModelCard({
 }
 
 ModelCard.propTypes = {
-  model: PropTypes.object
+  model: PropTypes.object,
+  onEdit: PropTypes.func
 }

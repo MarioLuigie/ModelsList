@@ -18,11 +18,15 @@ export const modelsReducer = (modelsList = initModelsList, action) => {
     case READ_MODELS:
       return action.payload;
     case UPDATE_MODEL:
-      return modelsList;
+      return modelsList.map(model => (
+        model._id === action.payload._id
+          ? {...model, ...action.payload}
+          : model
+      ));
     case DELETE_MODEL:
       return modelsList;
     case DELETE_ALL:
-      return modelsList;
+      return [];
     default:
       return modelsList;
   }
