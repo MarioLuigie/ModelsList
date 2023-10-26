@@ -24,7 +24,7 @@ export const modelsReducer = (modelsList = initModelsList, action) => {
           : model
       ));
     case DELETE_MODEL:
-      return modelsList;
+      return modelsList.filter(model => model._id !== action.payload);
     case DELETE_ALL:
       return [];
     default:

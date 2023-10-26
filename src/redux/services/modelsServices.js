@@ -22,8 +22,15 @@ export const updateModel = (form, id) => {
   return data;
 }
 
+//Delete selected item
+export const deleteModel = (id) => {
+  const data = mdlAxios.delete(`/${id}`);
+  return data;
+}
+
 //Delete all datas from server
 export const deleteAll = () => {
   const data = mdlAxios.delete("/");
   return data;
 }
+

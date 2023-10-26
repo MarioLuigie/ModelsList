@@ -103,7 +103,8 @@ const styles = css`
 
 export default function ModelCard({ 
   model,
-  onEdit
+  onEdit,
+  onDelete
 }) {
   
   return (
@@ -120,7 +121,7 @@ export default function ModelCard({
             <div className='control' onClick={onEdit}>
               <FontAwesomeIcon icon={faUserPen}/>
             </div>
-            <div className='control control--close'>
+            <div className='control control--close' onClick={onDelete}>
               <FontAwesomeIcon icon={faSquareXmark} />
             </div>
           </div>
@@ -144,5 +145,6 @@ export default function ModelCard({
 
 ModelCard.propTypes = {
   model: PropTypes.object,
-  onEdit: PropTypes.func
+  onEdit: PropTypes.func,
+  onDelete: PropTypes.func
 }

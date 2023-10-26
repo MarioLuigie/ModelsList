@@ -53,6 +53,17 @@ export const updateModel = (form, id) => async (dispatch) => {
   }
 }
 
+export const deleteModel = (id) => async (dispatch) => {
+  try {
+    await services.deleteModel(id);
+
+    dispatch({type: DELETE_MODEL, payload: id});
+    
+  } catch (error) {
+    console.log("Fail with deleting data", error);
+  }
+}
+
 //Dispatch all deleted datas to reducer from server
 export const deleteAll = () => async (dispatch) => {
   try {
