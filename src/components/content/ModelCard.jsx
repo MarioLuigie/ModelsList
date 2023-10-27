@@ -5,8 +5,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser, faUserPen, faSquareXmark } from '@fortawesome/free-solid-svg-icons';
 import PropTypes from "prop-types";
 
-import Card from "../ui/Card";
 import { colors } from "../../constants/colors";
+import Card from "../ui/Card";
 
 const styles = css`
   width: 100%;

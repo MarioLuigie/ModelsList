@@ -5,9 +5,8 @@ import { css } from '@emotion/react';
 import { useEffect } from "react";
 import { useDispatch } from 'react-redux';
 
-import Wrapper from "./layout/Wrapper";
 import { readModels } from "../redux/actions/modelsActions";
-import ModalPortal from "../modals/ModalPortal";
+import Wrapper from "./layout/Wrapper";
 
 const styles = css`
   width: 100%;

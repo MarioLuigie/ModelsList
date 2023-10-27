@@ -6,7 +6,7 @@ import { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTrash } from '@fortawesome/free-solid-svg-icons';
 
-import * as colors from "../../constants/colors";
+import { colors } from "../../constants/colors";
 import * as actions from "../../redux/actions/modelsActions";
 import ModalPortal from "../../modals/ModalPortal";
 
@@ -18,7 +18,7 @@ const styles = css`
 
   .button {
     font-size: 2.8rem;
-    color: ${colors.colors.buttonColor};
+    color: ${colors.buttonColor};
     display: flex;
     justify-content: center;
     cursor: pointer;

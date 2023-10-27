@@ -4,7 +4,6 @@ import types from "../../constants/actions";
 const initModelsList = [];
 
 export const modelsReducer = (modelsList = initModelsList, action) => {
-
   switch (action.type) {
     case types.CREATE_MODEL:
       return [...modelsList, action.payload];

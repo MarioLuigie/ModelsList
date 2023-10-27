@@ -4,7 +4,7 @@ import { css } from '@emotion/react';
 import ReactDOM from "react-dom";
 import PropTypes from "prop-types";
 
-import * as colors from "../constants/colors";
+import { colors } from "../constants/colors";
 
 const styles = css`
   height: 100vh;
@@ -20,10 +20,10 @@ const styles = css`
   .modal {
     width: 330px;
     height: 200px;
-    background-color: ${colors.colors.bgColor2};
-    outline: ${colors.colors.outlineColor} solid 1px;
+    background-color: ${colors.bgColor2};
+    outline: ${colors.outlineColor} solid 1px;
     border-radius: 5px;
-    box-shadow: ${colors.colors.boxShadow};
+    box-shadow: ${colors.boxShadow};
     display: flex;
     flex-direction: column;
     gap: 25px;

@@ -3,11 +3,11 @@
 import { css } from '@emotion/react';
 import { useRef } from "react";
 
+import * as dim from "../../constants/dimensions";
+import { colors } from "../../constants/colors";
 import Header from "./Header";
 import Main from "./Main";
 import Footer from "./Footer";
-import * as dim from "../../constants/dimensions";
-import * as colors from "../../constants/colors";
 
 const styles = css`
   width: ${dim.wrapper.width}%;
@@ -17,7 +17,7 @@ const styles = css`
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: ${colors.colors.bgColor1};
+  background-color: ${colors.bgColor1};
 
   @media screen and (min-width: 780px) {
     width: 75%;

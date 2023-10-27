@@ -5,6 +5,7 @@ import { Provider } from "react-redux";
 import ContextProvider from "./context/Context";
 import store from "./redux/store/store";
 import App from './components/App.jsx';
+
 import "./index.scss";
 
 ReactDOM.createRoot(document.getElementById('root')).render(

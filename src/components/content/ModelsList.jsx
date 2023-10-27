@@ -1,14 +1,14 @@
 /* eslint-disable react/no-unknown-property */
 // /** @jsxImportSource @emotion/react */
 import { css } from '@emotion/react';
+import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useModelContext } from '../../context/Context';
 import PropTypes from "prop-types";
-import { useState } from 'react';
 
 import * as actions from "../../redux/actions/modelsActions";
-import ModelCard from "./ModelCard";
 import { scrollToTop } from "../../utils/scroll";
+import ModelCard from "./ModelCard";
 import ModalPortal from '../../modals/ModalPortal';
 
 const styles = css`
@@ -23,8 +23,9 @@ const styles = css`
 export default function ModelsList({ mainRef }) {
   const [isOpen, setIsOpen] = useState(false);
   const [selectedId, setSelectedId] = useState("");
-  const modelsList = useSelector(store => store.modelsList);
+
   const { setEditingModel } = useModelContext();
+  const modelsList = useSelector(store => store.modelsList);
   const dispatch = useDispatch();
 
   const handleClose = () => {

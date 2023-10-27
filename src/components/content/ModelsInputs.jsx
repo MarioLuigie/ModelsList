@@ -4,8 +4,8 @@ import { css } from '@emotion/react';
 import { useState, useEffect } from "react";
 import { useDispatch } from 'react-redux';
 
-import { useModelContext } from '../../context/Context';
 import * as actions from "../../redux/actions/modelsActions";
+import { useModelContext } from '../../context/Context';
 import { colors } from "../../constants/colors";
 import Input from "../ui/Input";
 import Card from "../ui/Card";
@@ -49,7 +49,7 @@ export default function ModelsInputs() {
         _id
       });
     }
-  }, [editingModel])
+  }, [editingModel]);
 
   const handleChangeForm = (evt) => {
     setForm({
@@ -110,9 +110,17 @@ export default function ModelsInputs() {
       </Card>
       <Card>
         <div className='buttons'>
-          <Button label="Cancel" type="reset" onHandle={handleCancelForm}/>
+          <Button 
+            label="Cancel" 
+            type="reset" 
+            onHandle={handleCancelForm}
+          />
           {editingModel 
-            ? <Button type="button" label="Update" onHandle={handleUpdateConfirmModel}/>
+            ? <Button 
+              type="button" 
+              label="Update" 
+              onHandle={handleUpdateConfirmModel}
+            />
             : <Button label="Add"/>
           }
         </div>
