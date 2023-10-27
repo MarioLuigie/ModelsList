@@ -1,36 +1,37 @@
 import axios from "axios";
 
+//Initialization endpoint
 const url = "https://places-arw.vercel.app/api/people";
+//Create base url for all services
+const modelAxios = axios.create({baseURL: url});
 
-const mdlAxios = axios.create({baseURL: url});
-
-//Post data on server and return data
+//Service send object to server and return axios object with data(object) in prop data of returned data
 export const createModel = (newModel) => {
-  const data = mdlAxios.post("/", newModel);
+  const data = modelAxios.post("/", newModel);
   return data;
 }
 
-//Get data from server and return data
+//Services return data from server
 export const readModels = () => {
-  const data = mdlAxios.get("/");
+  const data = modelAxios.get("/");
   return data;
 }
 
-//Patch data on server and return updated data
+//Service send edited object and id to server and return this edited object
 export const updateModel = (form, id) => {
-  const data = mdlAxios.patch(`/${id}`, form);
+  const data = modelAxios.patch(`/${id}`, form);
   return data;
 }
 
-//Delete selected item
+//Service send id object to delete and return message
 export const deleteModel = (id) => {
-  const data = mdlAxios.delete(`/${id}`);
+  const data = modelAxios.delete(`/${id}`);
   return data;
 }
 
-//Delete all datas from server
+//Service return message
 export const deleteAll = () => {
-  const data = mdlAxios.delete("/");
+  const data = modelAxios.delete("/");
   return data;
 }
 

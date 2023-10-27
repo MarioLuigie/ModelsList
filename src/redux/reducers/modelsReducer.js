@@ -1,31 +1,24 @@
-import { actionsType } from "../actions/modelsActions";
-
-const { 
-  CREATE_MODEL, 
-  READ_MODELS, 
-  UPDATE_MODEL, 
-  DELETE_MODEL, 
-  DELETE_ALL
-} = actionsType;
+// import { actionTypes as types } from "../../constants/actions";
+import types from "../../constants/actions";
 
 const initModelsList = [];
 
 export const modelsReducer = (modelsList = initModelsList, action) => {
 
   switch (action.type) {
-    case CREATE_MODEL:
+    case types.CREATE_MODEL:
       return [...modelsList, action.payload];
-    case READ_MODELS:
+    case types.READ_MODELS:
       return action.payload;
-    case UPDATE_MODEL:
+    case types.UPDATE_MODEL:
       return modelsList.map(model => (
         model._id === action.payload._id
           ? {...model, ...action.payload}
           : model
       ));
-    case DELETE_MODEL:
+    case types.DELETE_MODEL:
       return modelsList.filter(model => model._id !== action.payload);
-    case DELETE_ALL:
+    case types.DELETE_ALL:
       return [];
     default:
       return modelsList;
