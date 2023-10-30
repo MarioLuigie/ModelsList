@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import * as services from "../services/modelsServices";
 import types from "../../constants/actions";
 

@@ -13,7 +13,7 @@ const styles = css`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  gap: 10px;
+  gap: 20px;
   align-items: center;
   border-top: ${colors.lineColor} solid 1px;
   flex-shrink: 0;
@@ -25,20 +25,19 @@ const styles = css`
     font-size: 0.7rem;
     width: 100%;
     text-align: center;
-    padding: 10px 0 0;
   }
 `
 
-export default function Footer({ sign }) {
-
+export default function Footer({ sign, mainRef }) {
   return (
     <div css={styles}>
-      <MainControls />
+      <MainControls mainRef={mainRef}/>
       <p className='sign'>{sign} &copy; </p>
     </div>
   )
 }
 
 Footer.propTypes = {
-  sign: PropTypes.string.isRequired
+  sign: PropTypes.string.isRequired,
+  mainRef: PropTypes.object
 }

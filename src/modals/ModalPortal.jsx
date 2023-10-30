@@ -88,6 +88,6 @@ export default function ModalPortal({ isOpen, onClose, onApply, msg }) {
 ModalPortal.propTypes = {
   msg: PropTypes.string.isRequired,
   isOpen: PropTypes.bool,
-  onClose: PropTypes.func,
-  onApply: PropTypes.func
+  onClose: PropTypes.func.isRequired,
+  onApply: PropTypes.func.isRequired
 }

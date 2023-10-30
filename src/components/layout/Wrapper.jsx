@@ -2,12 +2,14 @@
 // /** @jsxImportSource @emotion/react */
 import { css } from '@emotion/react';
 import { useRef } from "react";
+import { Routes, Route } from 'react-router-dom';
 
 import * as dim from "../../constants/dimensions";
 import { colors } from "../../constants/colors";
 import Header from "./Header";
 import Main from "./Main";
 import Footer from "./Footer";
+import ModelPrivSite from './modelPrivSite/ModelPrivSite';
 
 const styles = css`
   width: ${dim.wrapper.width}%;
@@ -30,8 +32,11 @@ export default function Wrapper() {
   return (
     <div css={styles}>
       <Header title="MAXmodels" />
-      <Main ref={mainRef} mainRef={mainRef}/>
-      <Footer sign="ARWcode 2023"/>
+      <Routes>
+        <Route exact path={"/"} element={<Main ref={mainRef} mainRef={mainRef}/>}/>
+        <Route path={"/model/:id/*"} element={<ModelPrivSite/>}/>
+      </Routes>
+      <Footer sign="ARWcode 2023" mainRef={mainRef}/>
     </div>
   )
 }

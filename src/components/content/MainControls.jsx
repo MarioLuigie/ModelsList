@@ -4,17 +4,22 @@ import { css } from '@emotion/react';
 import { useDispatch } from 'react-redux';
 import { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faTrash } from '@fortawesome/free-solid-svg-icons';
+import { faTrash, faChevronLeft, faChevronUp } from '@fortawesome/free-solid-svg-icons';
+import { Link } from 'react-router-dom';
+import PropTypes from "prop-types";
 
+import { scrollToTop } from "../../utils/scroll";
+import { useModelContext } from '../../context/Context';
 import { colors } from "../../constants/colors";
 import * as actions from "../../redux/actions/modelsActions";
 import ModalPortal from "../../modals/ModalPortal";
 
 const styles = css`
+  position: relative;
   width: 100%;
-  padding-top: 10px;
   display: flex;
   justify-content: center;
+  align-items: center;
 
   .button {
     font-size: 2.8rem;
@@ -31,35 +36,77 @@ const styles = css`
       transform: scale(0.95);
     }
   }
+
+  .button--left {
+    position: absolute;
+    left: 30px;
+    font-size: 3rem;
+  }
+
+  .button--right {
+    position: absolute;
+    top: 2px;
+    right: 30px;
+    font-size: 3rem;
+  }
 `
-export default function MainControls() {
-  const [isOpen, setIsOpen] = useState(false);
+export default function MainControls({ mainRef }) {
+  const [isOpenModal, setIsOpenModal] = useState(false);
   const dispatch = useDispatch();
 
-  const handleClose = () => {
-    setIsOpen(false);
+  const { isMainLoaded, setIsMainLoaded } = useModelContext();
+
+  const handleCloseModal = () => {
+    setIsOpenModal(false);
   }
 
   const handleDeleteAll = () => {
-    setIsOpen(true);
+    setIsOpenModal(true);
   }
 
   const handleDeleteConfirmAll = () => {
     dispatch(actions.deleteAll());
-    setIsOpen(false);
+    setIsOpenModal(false);
+  }
+
+  const handleOpenMain = () => {
+    setIsMainLoaded(true);
   }
 
   return (
     <div css={styles}>
-      <div className="button" onClick={handleDeleteAll}>
+      {!isMainLoaded &&
+        <div 
+          className='button--left' 
+          onClick={handleOpenMain}
+        >
+          <Link to={"/"} className="button">
+            <FontAwesomeIcon icon={faChevronLeft} />
+          </Link>
+        </div>}
+      <div 
+        className="button" 
+        onClick={handleDeleteAll}
+      >
         <FontAwesomeIcon icon={faTrash} />
       </div>
+      {isMainLoaded &&
+        <div 
+          className='button button--right' 
+          onClick={() => scrollToTop(mainRef.current)}
+        >
+          <FontAwesomeIcon icon={faChevronUp}/>
+        </div>}
       <ModalPortal
         msg="Delete all models?" 
-        isOpen={isOpen} 
-        onClose={handleClose}
+        isOpen={isOpenModal} 
+        onClose={handleCloseModal}
         onApply={handleDeleteConfirmAll}
       />
     </div>
   )
+}
+
+MainControls.propTypes = {
+  mainRef: PropTypes.object
 }

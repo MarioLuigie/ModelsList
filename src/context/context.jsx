@@ -7,11 +7,14 @@ export const useModelContext = () => useContext(ModelContext);
 
 export default function ContextProvider ({ children }) {
   const [editingModel, setEditingModel] = useState(null);
+  const [isMainLoaded, setIsMainLoaded] = useState(true);
 
   const providerValues = {
     useModelContext,
     editingModel,
     setEditingModel,
+    isMainLoaded, 
+    setIsMainLoaded
   }
 
   return (

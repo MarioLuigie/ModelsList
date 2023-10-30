@@ -4,7 +4,9 @@ import { css } from '@emotion/react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser, faUserPen, faSquareXmark } from '@fortawesome/free-solid-svg-icons';
 import PropTypes from "prop-types";
+import { Link } from 'react-router-dom';
 
+import { useModelContext } from '../../context/Context';
 import { colors } from "../../constants/colors";
 import Card from "../ui/Card";
 
@@ -106,6 +108,11 @@ export default function ModelCard({
   onEdit,
   onDelete
 }) {
+  const { setIsMainLoaded } = useModelContext(); 
+
+  const handleOpenModelSite = () => {
+    setIsMainLoaded(false);
+  }
   
   return (
     <div css={styles}>
@@ -115,8 +122,10 @@ export default function ModelCard({
             <p>ID: {model._id}</p>
           </div>
           <div className='controls'>
-            <div className='control'>
-              <FontAwesomeIcon icon={faUser}/>
+            <div onClick={handleOpenModelSite}>
+              <Link to={`/model/${model._id}/about`} className={"control"}>
+                <FontAwesomeIcon icon={faUser}/>
+              </Link>
             </div>
             <div className='control' onClick={onEdit}>
               <FontAwesomeIcon icon={faUserPen}/>
