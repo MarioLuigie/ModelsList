@@ -17,12 +17,16 @@ export const createModel = (newModel) => async (dispatch) => {
 //Create new List
 export const readModels = () => async (dispatch) => {
   try {
+    dispatch({type: types.LOADING, payload: true});
     const { data } = await services.readModels();
 
     dispatch({type: types.READ_MODELS, payload: data});
+    dispatch({type: types.LOADING, payload: false});
 
   } catch (error) {
     console.error("Fail with reading datas", error);
+    dispatch({type: types.ERROR, payload: error});
+    dispatch({type: types.LOADING, payload: false});
   }
 }
 
