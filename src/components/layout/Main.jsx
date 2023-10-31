@@ -19,12 +19,12 @@ const styles = css`
 
 `
 
-const Main = forwardRef(({ mainRef }, ref) => {
+const Main = forwardRef((_, ref) => {
 
   return (
     <div css={styles} ref={ref}>
       <ModelsInputs />
-      <ModelsList mainRef={mainRef}/>
+      <ModelsList mainRef={ref}/>
     </div>
   );
 });

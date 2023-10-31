@@ -20,14 +20,14 @@ const styles = css`
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     font-family: "Josefin Sans";
-    font-size: 2.8rem;
+    font-size: 3rem;
 
     span {
       font-weight: 100;
     }
 
     @media screen and (min-width: 430px) {
-      font-size: 3.3rem;
+      font-size: 3.5rem;
     }
 
     @media screen and (min-width: 460px) {

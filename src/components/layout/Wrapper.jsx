@@ -33,7 +33,7 @@ export default function Wrapper() {
     <div css={styles}>
       <Header title="MAXmodels" />
       <Routes>
-        <Route exact path={"/"} element={<Main ref={mainRef} mainRef={mainRef}/>}/>
+        <Route exact path={"/"} element={<Main ref={mainRef}/>}/>
         <Route path={"/model/:id/*"} element={<ModelPrivSite/>}/>
       </Routes>
       <Footer sign="ARWcode 2023" mainRef={mainRef}/>

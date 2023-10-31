@@ -6,7 +6,6 @@ import { faUser, faUserPen, faSquareXmark } from '@fortawesome/free-solid-svg-ic
 import PropTypes from "prop-types";
 import { Link } from 'react-router-dom';
 
-import { useModelContext } from '../../context/Context';
 import { colors } from "../../constants/colors";
 import Card from "../ui/Card";
 
@@ -108,12 +107,7 @@ export default function ModelCard({
   onEdit,
   onDelete
 }) {
-  const { setIsMainLoaded } = useModelContext(); 
 
-  const handleOpenModelSite = () => {
-    setIsMainLoaded(false);
-  }
-  
   return (
     <div css={styles}>
       <Card config={{gap: "20"}}>
@@ -122,7 +116,7 @@ export default function ModelCard({
             <p>ID: {model._id}</p>
           </div>
           <div className='controls'>
-            <div onClick={handleOpenModelSite}>
+            <div>
               <Link to={`/model/${model._id}/about`} className={"control"}>
                 <FontAwesomeIcon icon={faUser}/>
               </Link>

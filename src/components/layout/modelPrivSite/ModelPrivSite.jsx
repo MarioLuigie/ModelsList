@@ -18,9 +18,14 @@ const styles = css`
   flex-direction: column;
   align-items: center;
   color: #dddddd;
-
 `
 export default function ModelWrapper() {
+  const nav = [
+    "about",
+    "gallery",
+    "contact"
+  ];
+
   const { setIsMainLoaded } = useModelContext();
 
   //Get object with actual user id from path-site address in Browser
@@ -32,14 +37,11 @@ export default function ModelWrapper() {
   //Find user with the same id 
   const model = modelsList.find(model => model._id === params.id);
 
-  const nav = [
-    "about",
-    "gallery",
-    "contact"
-  ];
-
   useEffect(() => {
     setIsMainLoaded(false);
+    return (
+      () => setIsMainLoaded(true)
+    )
   }, []);
 
   return (
