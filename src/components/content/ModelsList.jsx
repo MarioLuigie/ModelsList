@@ -10,6 +10,7 @@ import * as actions from "../../redux/actions/modelsActions";
 import { scrollToTop } from "../../utils/scroll";
 import ModelCard from "./ModelCard";
 import ModalPortal from '../../modals/ModalPortal';
+import Loader from "../ui/Loader";
 
 const styles = css`
   width: 100%;
@@ -26,6 +27,7 @@ export default function ModelsList({ mainRef }) {
 
   const { setEditingModel } = useModelContext();
   const modelsList = useSelector(store => store.modelsList);
+  const { isLoading, error } = useSelector(store => store.api);
   const dispatch = useDispatch();
 
   const handleClose = () => {
@@ -49,14 +51,25 @@ export default function ModelsList({ mainRef }) {
 
   return (
     <div css={styles}>
-      {modelsList.map((model) => (
-        <ModelCard 
-          key={model._id} 
-          model={model}
-          onEdit={handleEditModel(model)}
-          onDelete={handleDeleteSelected(model._id)}
-        />
-      ))}
+      {
+        isLoading ? (
+          <Loader label="Loading" />
+        ) : error ? (
+          <div css={styles}>
+            <p>{"Sorry, but we have a problem with reading your datas"}</p>
+            <p>{error.message}</p>
+          </div>
+        ) : (
+          modelsList.map((model) => (
+            <ModelCard 
+              key={model._id} 
+              model={model}
+              onEdit={handleEditModel(model)}
+              onDelete={handleDeleteSelected(model._id)}
+            />
+          ))
+        )
+      }
       <ModalPortal
         msg="Delete selected model?" 
         isOpen={isOpen} 

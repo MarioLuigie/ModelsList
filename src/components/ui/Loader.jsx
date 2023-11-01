@@ -12,6 +12,7 @@ const styles = css`
 
   .label {
     margin-top: 100px;
+    color: white;
   }
 
   .loader {
