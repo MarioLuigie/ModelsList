@@ -43,7 +43,7 @@ const styles = css`
     font-size: 3rem;
   }
 
-  .button--right {
+  .button--top {
     position: absolute;
     top: 2px;
     right: 30px;
@@ -92,7 +92,7 @@ export default function MainControls({ mainRef }) {
       </div>
       {isMainLoaded &&
         <div 
-          className='button button--right' 
+          className='button button--top' 
           onClick={() => scrollToTop(mainRef.current)}
         >
           <FontAwesomeIcon icon={faChevronUp}/>

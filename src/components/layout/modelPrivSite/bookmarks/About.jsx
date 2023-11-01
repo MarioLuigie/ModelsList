@@ -4,10 +4,13 @@ import { css } from '@emotion/react';
 import PropTypes from "prop-types";
 import { useSelector } from 'react-redux';
 
+import Loader from "../../../ui/Loader";
+
 const styles = css`
   width: 100%;
   height: 100%;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
 
@@ -16,7 +19,6 @@ const styles = css`
     text-align: center;
   }
 `
-
 export default function About({
   model
 }) {
@@ -27,9 +29,12 @@ export default function About({
     <>
       {
         isLoading ? (
-          <div css={styles}>Loading...</div>
+          <Loader label="Loading" />
         ) : error ? (
-          <div css={styles}>{error.message}</div>
+          <div css={styles}>
+            <p>{"Sorry, but we have a problem with reading your datas"}</p>
+            <p>{error.message}</p>
+          </div>
         ) : (
           <div css={styles}>
             <div className='datas'>
@@ -46,10 +51,3 @@ export default function About({
 About.propTypes = {
   model: PropTypes.object
 }
-
-{/* <div css={styles}>
-            <div className='datas'>
-              <p>Model: {model.name} {model.surname}</p>
-              <p>Age: {model.age}</p>
-            </div>
-          </div> */}
