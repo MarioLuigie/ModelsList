@@ -2,7 +2,7 @@
 // /** @jsxImportSource @emotion/react */
 import { css } from '@emotion/react';
 import PropTypes from "prop-types";
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
 import { colors } from "../../../constants/colors";
 
@@ -21,7 +21,7 @@ const styles = css`
     font-weight: 400;
     letter-spacing: 1px;
 
-    &:hover {
+    &:hover, :focus {
       color: #ab5ef3;
     }
   }
@@ -33,10 +33,12 @@ export default function ModelNav({ nav, model }) {
     <ul css={styles}>
       {nav && nav.map((item, i) => (
         <li key={i}>
-          <Link 
+          <NavLink 
             to={`/model/${model?._id}/${item}`} 
-            className='navItem'
-          >{item}</Link>
+            className={'navItem'}
+          >
+            {item}
+          </NavLink>
         </li>
       ))}
     </ul>
